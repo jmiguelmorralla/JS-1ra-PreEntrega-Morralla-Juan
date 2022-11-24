@@ -10,24 +10,23 @@ let cantidadBalancin = 0;
 let cantidadArcoiris = 0;
 let cantidadRompecabezas = 0;
 let cantidadCasita = 0;
+let credito = 20000
 
-// const total = 0 hacer función
+
 
 const iva = x => total * 0.21
-const neto = (suma, iva) =>suma - iva 
-
-
-console.log(suma(precioArcoiris,precioBalancin,10,20))
-
-
-
+const neto = (suma, iva) => suma - iva 
 
 if (responsableInscripto == "si") {
-    console.log(`Hola ${nombre}, emitiremos factura tipo A con IVA discriminado.`)
+    console.log(`Hola ${nombre}, emitiremos factura tipo A con IVA discriminado. Su crédito en la billetera virtual es de $${credito}`)
 } else{
-    console.log(`Hola ${nombre}, emitiremos factura tipo B.`)
+    console.log(`Hola ${nombre}, emitiremos factura tipo B. Su crédito en la billetera virtual es de $${credito}`)
 } 
 
+
+while (credito>=0) {
+    
+}
 
 
 // let seleccionProductos = prompt("Ingrese el nombre del producto que desea comprar de la siguiente lista: Balancin, Arcoiris, Rompecabezas, Casita");
@@ -58,3 +57,14 @@ if (responsableInscripto == "si") {
 // if (responsableInscripto === "SI" || responsableIncripto === "si" || responsableIncripto === "Si") {
 //     let precioNeto = precio/1.21;
 // }
+
+
+// function totalizar(producto1, producto2, producto3, producto4) {
+//     let total = producto1 + producto2 + producto3 + producto4;
+// }
+
+// totalizar(50,20,30,10);
+
+// console.log(totalizar)
+
+// const total = 0 hacer función

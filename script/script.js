@@ -3,14 +3,14 @@ const nombre = prompt("Ingrese su nombre.") .toUpperCase();
 const apellido = prompt("Ingrese su apellido.");
 const responsableInscripto = prompt("¿Es Responsable Inscripto en IVA?") .toLowerCase()
 const precioBalancin = 5000;
-const precioArcoiris = 3000;
-const precioRompecabezas = 2000;
-const precioCasita = 2500;
+// const precioArcoiris = 3000;
+// const precioRompecabezas = 2000;
+// const precioCasita = 2500;
 let cantidadBalancin = 0;
-let cantidadArcoiris = 0;
-let cantidadRompecabezas = 0;
-let cantidadCasita = 0;
-let credito = 20000
+// let cantidadArcoiris = 0;
+// let cantidadRompecabezas = 0;
+// let cantidadCasita = 0;
+let stockBalancin = 10
 
 
 
@@ -18,15 +18,19 @@ const iva = x => total * 0.21
 const neto = (suma, iva) => suma - iva 
 
 if (responsableInscripto == "si") {
-    console.log(`Hola ${nombre}, emitiremos factura tipo A con IVA discriminado. Su crédito en la billetera virtual es de $${credito}`)
+    console.log(`Hola ${nombre}, emitiremos factura tipo A con IVA discriminado. El stock actual de Balancines es de ${stockBalancin}`)
 } else{
-    console.log(`Hola ${nombre}, emitiremos factura tipo B. Su crédito en la billetera virtual es de $${credito}`)
+    console.log(`Hola ${nombre}, emitiremos factura tipo B. El stock actual de Balancines es de ${stockBalancin}.`)
 } 
 
 
-while (credito>=0) {
-    
+while (stockBalancin>=0) {
+    let compra = parseInt(prompt(`Indique cantidad Balancines que desea comprar. El stock actual es de ${stockBalancin}.`));
+    if (!stockBalancin) {break;}
+    stockBalancin -= compra
 }
+
+console.log(stockBalancin)
 
 
 // let seleccionProductos = prompt("Ingrese el nombre del producto que desea comprar de la siguiente lista: Balancin, Arcoiris, Rompecabezas, Casita");

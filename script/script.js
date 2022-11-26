@@ -1,28 +1,34 @@
 // Variables
 const nombre = prompt("Ingrese su nombre.") .toUpperCase();
 const apellido = prompt("Ingrese su apellido.");
-const responsableInscripto = prompt("¿Es Responsable Inscripto en IVA?") .toLowerCase()
+const condicionIva = prompt("¿Es Responsable Inscripto en IVA?") .toLowerCase();
+const responsableInscripto = condicionIva == "si";
 let credito = 20000;
 const precioBalancin = 5000;
 const precioArcoiris = 3000;
 const precioCasita = 2500;
-const alicuota = 0.21
-let compras = 0
+const alicuota = 0.21;
+let totalComprado; 
+let neto;
+let iva;
 
-function totalComprado(creditoInicial, creditoFinal) {
-    console.log(20000 - credito)
+// Funciones
+function calcularTotalComprado(creditoInicial, creditoFinal) {
+    return creditoInicial - creditoFinal
 }
 
-const iva = totalComprado => console.log(totalComprado * 0.21)
+function calcularNeto(baseImponible) {
+    return baseImponible / (1 + alicuota)
+}
 
 
 
-if (responsableInscripto == "si") {
-    console.log(`Hola ${nombre}, emitiremos factura tipo A con IVA discriminado. Tu crédito actual es de $${credito}.`)
+// Condicionales
+if (responsableInscripto) {
+    alert(`Hola ${nombre}, emitiremos factura tipo A con IVA discriminado. Tu crédito actual es de $${credito}.`)
 } else{
-    console.log(`Hola ${nombre}, emitiremos factura tipo B. Tu crédito actual es de $${credito}.`)
+    alert(`Hola ${nombre}, emitiremos factura tipo B. Tu crédito actual es de $${credito}.`)
 } 
-
 
 while (credito>=2500) {
     let producto = prompt(`¿Qué producto te gustaría comprar? Podés elegir: Balancin ($${precioBalancin}), Arcoiris ($${precioArcoiris}) o Casita ($${precioCasita}). Los precios incluyen IVA. Tu crédito actual es de $${credito}. Podés escribir ESC para terminar.`)
@@ -47,11 +53,22 @@ while (credito>=2500) {
     }
 }
 
+alert(`Tu crédito es de $${credito}. Gracias por tu compra.`)
 
 
+totalComprado = calcularTotalComprado (20000, credito);
+neto = calcularNeto (totalComprado);
+iva = totalComprado - neto;
 
-alert(`Tu crédito es de $${credito}.  Gracias por tus compras.`)
+let totalCompradoRedondeado = Math.round(totalComprado);
+let netoRedondeado = Math.round(neto);
+let ivaRedondeado = Math.round(iva);
+
+if (responsableInscripto) {
+    alert(`El importe total de tu compra es de $${totalCompradoRedondeado}. El neto gravado es $${netoRedondeado}. El IVA es $${ivaRedondeado}.`)
+}
+else {
+    alert(`El importe total de tu compra es $${totalCompradoRedondeado}.`)
+}
 
 
-totalComprado()
-iva()

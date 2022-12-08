@@ -4,9 +4,7 @@ const apellido = prompt("Ingrese su apellido.");
 const condicionIva = prompt("¿Es Responsable Inscripto en IVA?") .toLowerCase();
 const responsableInscripto = condicionIva == "si";
 let credito = 20000;
-const precioBalancin = 5000;
-const precioArcoiris = 3000;
-const precioCasita = 2500;
+
 const alicuota = 0.21;
 let totalComprado; 
 let neto;
@@ -22,6 +20,30 @@ function calcularNeto(baseImponible) {
 }
 
 
+function crearProducto(nombre, marca, origen, material, precio, disponibilidad) {
+    this.nombre = nombre;
+    this.marca = marca;
+    this.origen = origen;
+    this.material = material;
+    this.precio = precio;
+    this.disponibilidad = disponibilidad;
+
+    this.caption = function() {
+        console.log(`${this.nombre} es un producto de primera calidad. La marca ${this.marca} presta mucha atención a las teminaciones, especialmente cuando el producto es de ${material}.`)
+    }
+}
+
+const balancin = new crearProducto ("Balancin", "Juguetes Olsen", "Argentina", "Madera", 12000, true);
+const arcoiris = new crearProducto ("Arcoiris", "Juguetes Olsen", "Argentina", "Madera", 7000, true);
+const casita = new crearProducto ("Casita", "Confiture", "Argentina", "Madera", 4500, true);
+const rompecabezas = new crearProducto ("Rompecabezas", "Tak Tak", "Madera", 3000, false);
+const torre = new crearProducto ("Torre de Encastre", "Juguetes Olsen", "Argentina", "Madera", 2900, true);
+const luna = new crearProducto ("Luna Equilibrista", "Confiture", "Argentina", "Madera", 5900, true);
+
+// Array
+
+const productos = [balancin, arcoiris, casita, rompecabezas, torre, luna]
+console.log(productos)
 
 // Condicionales
 if (responsableInscripto) {

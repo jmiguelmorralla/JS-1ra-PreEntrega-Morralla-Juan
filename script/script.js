@@ -3,15 +3,14 @@ let credito = 30000;
 const alicuota = 0.21;
 let neto;
 let iva;
-let fecha = new Date()
 
 
-// Constructor de objeto.
+// Constructor de cliente.
 
 class crearCliente {
     constructor(nombre, apellido, condicionIva) {
-        this.nombre = nombre;
-        this.apellido = apellido;
+        this.nombre = nombre.toUpperCase();
+        this.apellido = apellido.toUpperCase();
         this.condicionIva = condicionIva;
     }
 }
@@ -19,6 +18,9 @@ class crearCliente {
 //Creación de cliente.
 
 const cliente1 = new crearCliente ((prompt("Ingrese su nombre.")), prompt("Ingrese su apellido."), confirm("Si es Responsable Inscripto en IVA, haga click en ACEPTAR, sino en CANCELAR"));
+
+
+//Muestra por consola de cliente creado.
 
 console.log(cliente1);
 
@@ -34,7 +36,7 @@ class crearProducto {
         this.disponibilidad = disponibilidad;
 
         this.caption = function () {
-            console.log(`${this.nombre} es un producto de primera calidad. La marca ${this.marca} presta mucha atención a las teminaciones, especialmente cuando el producto es de ${this.material}.`);
+            console.log(`${(this.nombre)} es un producto de primera calidad. La marca ${this.marca} presta mucha atención a las teminaciones, especialmente cuando el producto es de ${this.material}.`);
         };
     }
 }
@@ -112,9 +114,6 @@ while (credito>=4500) {
 }
 
 
-
-alert(`Tu crédito es de $${credito}. Gracias por tu compra.`)
-
 //Método reduce.
 let totalComprado = carrito.reduce((acumulado, producto)=>{
     return acumulado + producto.precio
@@ -138,10 +137,11 @@ alert(resumenCompra);
 
 //Mensaje final.
 if (cliente1.condicionIva) {
-    alert(`El importe total de tu compra es de $${totalCompradoRedondeado}. El neto gravado es $${netoRedondeado}. El IVA es $${ivaRedondeado}.`)
+    alert(`El importe total de tu compra es de $${totalCompradoRedondeado}. El neto gravado es $${netoRedondeado}. El IVA es $${ivaRedondeado}. Tu crédito es de $${credito}. Gracias por tu compra.`)
 }
 else {
-    alert(`El importe total de tu compra es $${totalCompradoRedondeado}.`)
+    alert(`El importe total de tu compra es $${totalCompradoRedondeado}. Tu crédito es de $${credito}. Gracias por tu compra.`)
 }
+
 
 
